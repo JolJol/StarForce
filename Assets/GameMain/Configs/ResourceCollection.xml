@@ -53,6 +53,7 @@
       <Asset Guid="24ca310f92a6796408f1db7647ec4e55" ResourceName="UI/UISprites/Common" />
       <Asset Guid="2768a9a4c8d289840918dcb879705893" ResourceName="Meshes" />
       <Asset Guid="2cb5eef4d7d7bf6459dd13a3f8d90246" ResourceName="Textures" />
+      <Asset Guid="2d2a6aff7f0067b449d3ee06d6c0fb92" ResourceName="Scenes" />
       <Asset Guid="315e8ed2db27c254cb3366ff0793cd90" ResourceName="DataTables" />
       <Asset Guid="3455fe69f7ddc4604b95bf9b0a1e88d7" ResourceName="Entities" />
       <Asset Guid="352da872791696c48af3b21132e3e3c3" ResourceName="DataTables" />
