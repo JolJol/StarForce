@@ -22,7 +22,7 @@ namespace StarForce
                 return GameMode.Survival;
             }
         }
-
+        
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
             base.Update(elapseSeconds, realElapseSeconds);

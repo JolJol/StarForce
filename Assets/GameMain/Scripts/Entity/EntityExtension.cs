@@ -75,6 +75,11 @@ namespace StarForce
             entityCompoennt.ShowEntity(typeof(Asteroid), "Asteroid", Constant.AssetPriority.AsteroiAsset, data);
         }
 
+        public static void ShowFloors(this EntityComponent entityComponent,FloorData data)
+        {
+            entityComponent.ShowEntity(typeof(Floor),"Floors",Constant.AssetPriority.FloorAsset, data);
+        }
+        
         public static void ShowEffect(this EntityComponent entityComponent, EffectData data)
         {
             entityComponent.ShowEntity(typeof(Effect), "Effect", Constant.AssetPriority.EffectAsset, data);

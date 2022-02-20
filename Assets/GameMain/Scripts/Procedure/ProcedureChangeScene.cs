@@ -90,13 +90,27 @@ namespace StarForce
                 return;
             }
 
-            if (m_ChangeToMenu)
+            // if (m_ChangeToMenu)
+            // {
+            //     ChangeState<ProcedureMenu>(procedureOwner);
+            // }
+            // else
+            // {
+            //     ChangeState<ProcedureMain>(procedureOwner);
+            // }
+            int sceneId = procedureOwner.GetData<VarInt32>("NextSceneId");
+            switch (sceneId)
             {
-                ChangeState<ProcedureMenu>(procedureOwner);
-            }
-            else
-            {
-                ChangeState<ProcedureMain>(procedureOwner);
+                //Menu
+                case 1:
+                    ChangeState<ProcedureMenu>(procedureOwner);
+                    break;
+                case 2:
+                    ChangeState<ProcedureMain>(procedureOwner);
+                    break;
+                case 3:
+                    ChangeState<ProcedureTest>(procedureOwner);
+                    break;
             }
         }
 
