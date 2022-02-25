@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEditor.U2D;
+using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
@@ -7,6 +9,7 @@ namespace StarForce
     /// </summary>
     public class Character:Entity
     {
+        private CharacterData m_CharacterData=null;
         public Animator CachedAnimator
         {
             get;
@@ -21,6 +24,12 @@ namespace StarForce
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
+            m_CharacterData = userData as CharacterData;
+            if (m_CharacterData==null)
+            {
+                Log.Error("角色数据表无效！！！");
+                return;
+            }
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
