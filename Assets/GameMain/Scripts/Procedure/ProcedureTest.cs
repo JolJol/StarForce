@@ -18,12 +18,11 @@ namespace StarForce
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            CreateFloors();
+            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800011));
         }
 
         private void CreateFloors()
         {
-            GameEntry.Entity.ShowFloors(new FloorData(GameEntry.Entity.GenerateSerialId(),80001));
         }
     }
 }
