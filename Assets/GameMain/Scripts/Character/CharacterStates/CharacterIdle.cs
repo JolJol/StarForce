@@ -1,29 +1,37 @@
-﻿using GameFramework.Fsm;
+﻿using System.Timers;
+using GameFramework.Fsm;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
     /// <summary>
-    /// 攻击状态
+    /// 闲置状态
     /// </summary>
-    public class CharacterAttack:CharacterBase
+    public class CharacterIdle:CharacterBase
     {
         protected override void OnInit(IFsm<Character> procedureOwner)
         {
             base.OnInit(procedureOwner);
         }
 
-        private readonly int m_AttackPara = Animator.StringToHash("Attack");
         protected override void OnEnter(IFsm<Character> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            procedureOwner.Owner.CachedAnimator.SetTrigger(m_AttackPara);
-            procedureOwner.Owner.IsAttackComplete = false;
+            m_ReadyTimer = Time.time + m_ReadyTime;
         }
+
+        private void TimerTest()
+        {
+            Log.Debug("Timer执行了");
+        }
+        
+        private float m_ReadyTime = 1f;
+        private float m_ReadyTimer = 0f;
         protected override void OnUpdate(IFsm<Character> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            if (procedureOwner.Owner.IsAttackComplete)
+            if (Time.time > m_ReadyTimer)
             {
                 ChangeState<CharacterReady>(procedureOwner);
             }

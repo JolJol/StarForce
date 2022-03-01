@@ -1,35 +1,35 @@
-﻿using GameFramework.Fsm;
+﻿using GameFramework.Entity;
+using GameFramework.Fsm;
 using UnityEngine;
 
 namespace StarForce
 {
     /// <summary>
-    /// 闲置状态
+    /// 攻击状态
     /// </summary>
-    public class CharacterIdle:CharacterBase
+    public class CharacterAttack:CharacterBase
     {
         protected override void OnInit(IFsm<Character> procedureOwner)
         {
             base.OnInit(procedureOwner);
         }
 
+        private readonly int m_AttackPara = Animator.StringToHash("Attack");
         protected override void OnEnter(IFsm<Character> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            m_ReadyTimer=Time.time+m_ReadyTime;
+            procedureOwner.Owner.CachedAnimator.SetTrigger(m_AttackPara);
+            procedureOwner.Owner.IsAttackComplete = false;
         }
-
-        private float m_ReadyTime = 1f;
-        private float m_ReadyTimer = 0f;
         protected override void OnUpdate(IFsm<Character> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            if (Time.time > m_ReadyTimer)
+            if (procedureOwner.Owner.IsAttackComplete)
             {
                 ChangeState<CharacterReady>(procedureOwner);
             }
         }
-
+        
         protected override void OnLeave(IFsm<Character> procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
@@ -38,6 +38,15 @@ namespace StarForce
         protected override void OnDestroy(IFsm<Character> procedureOwner)
         {
             base.OnDestroy(procedureOwner);
+        }
+
+        private void FindTarget()
+        {
+            IEntityGroup group = GameEntry.Entity.GetEntityGroup("Enemy");
+            if (group != null)
+            {
+                
+            }
         }
     }
 }

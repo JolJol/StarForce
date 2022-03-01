@@ -47,7 +47,7 @@ namespace StarForce
             base.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
-        public virtual void Hit()
+        public void Hit()
         {
             Log.Debug("Hit");
         }
@@ -55,10 +55,10 @@ namespace StarForce
         private bool m_IsAttackComplete = false;
         public bool IsAttackComplete
         {
-            get { return m_IsAttackComplete; }
-            set { m_IsAttackComplete = value; }
+            get => m_IsAttackComplete;
+            set => m_IsAttackComplete = value;
         }
-        public virtual void AttackComplete()
+        public void AttackComplete()
         {
             m_IsAttackComplete=true;
         }
