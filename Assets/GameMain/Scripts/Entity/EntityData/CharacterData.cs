@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace StarForce
 {
+    [SerializeField]
     public class CharacterData : EntityData
     {
         [SerializeField] private float m_AttackSpeed = 0f;

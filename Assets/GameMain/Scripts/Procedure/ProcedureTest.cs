@@ -19,6 +19,7 @@ namespace StarForce
         {
             base.OnEnter(procedureOwner);
             GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800011));
+            GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(),800012));
         }
 
         private void CreateFloors()

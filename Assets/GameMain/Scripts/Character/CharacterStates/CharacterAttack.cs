@@ -39,14 +39,5 @@ namespace StarForce
         {
             base.OnDestroy(procedureOwner);
         }
-
-        private void FindTarget()
-        {
-            IEntityGroup group = GameEntry.Entity.GetEntityGroup("Enemy");
-            if (group != null)
-            {
-                
-            }
-        }
     }
 }

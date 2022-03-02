@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
@@ -20,16 +21,22 @@ namespace StarForce
             private set;
         }
 
-        public static HPBarComponent HPBar
+        public static HPBarComponent HpBar
         {
             get;
             private set;
         }
-        
+
+        public static EnemyComponent EnemyManager
+        {
+            get;
+            private set;
+        }
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
-            HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+            HpBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+            EnemyManager = UnityGameFramework.Runtime.GameEntry.GetComponent<EnemyComponent>();
         }
     }
 }

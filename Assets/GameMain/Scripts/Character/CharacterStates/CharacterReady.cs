@@ -20,19 +20,31 @@ namespace StarForce
             base.OnEnter(procedureOwner);
             procedureOwner.Owner.CachedAnimator.SetTrigger(m_ReadyPara);
             m_AttackTimer = Time.time + m_AttackTime;
+            m_TargetEnemy = null;
         }
 
         private float m_AttackTime = 0.5f;
         private float m_AttackTimer = 0f;
+        private Enemy m_TargetEnemy;
         protected override void OnUpdate(IFsm<Character> procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
-            if (Time.time > m_AttackTimer)
+            if (m_TargetEnemy)
             {
-                ChangeState<CharacterAttack>(procedureOwner);
+                if (Time.time > m_AttackTimer)
+                {
+                    ChangeState<CharacterAttack>(procedureOwner);
+                }
+                //朝向目标
+                procedureOwner.Owner.CachedTransform.LookAt(m_TargetEnemy.CachedTransform);
+            }
+            else
+            {
+                m_TargetEnemy = GameEntry.EnemyManager.GetEnemy();
+                procedureOwner.Owner.SetTarget(m_TargetEnemy);
             }
         }
-
+        
         protected override void OnLeave(IFsm<Character> procedureOwner, bool isShutdown)
         {
             base.OnLeave(procedureOwner, isShutdown);
@@ -42,5 +54,6 @@ namespace StarForce
         {
             base.OnDestroy(procedureOwner);
         }
+
     }
 }

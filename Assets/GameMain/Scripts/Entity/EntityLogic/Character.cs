@@ -1,6 +1,7 @@
 ﻿using GameFramework.Fsm;
 using UnityEditor.U2D;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityGameFramework.Runtime;
 
 namespace StarForce
@@ -8,9 +9,11 @@ namespace StarForce
     /// <summary>
     /// 角色逻辑类
     /// </summary>
-    public class Character:Entity
+    public class Character:EntityLogic
     {
+        [SerializeField]
         private CharacterData m_CharacterData=null;
+        [SerializeField]
         private IFsm<Character> m_CharacterFsm;
         public Animator CachedAnimator
         {
@@ -27,7 +30,7 @@ namespace StarForce
             states[2] = new CharacterAttack();
             m_CharacterFsm = GameEntry.Fsm.CreateFsm<Character>(this, states);
         }
-        private Vector3 m_TempPos = new Vector3(-16.78f,1.06f,10.75f);
+        private readonly Vector3 m_TempPos = new Vector3(-16.78f,1.06f,10.75f);
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
@@ -40,6 +43,7 @@ namespace StarForce
             m_CharacterFsm.Start<CharacterIdle>();
             CachedTransform.position = m_TempPos;
             CachedTransform.localScale = new Vector3(3,3,3);
+            
         }
 
         protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -47,9 +51,16 @@ namespace StarForce
             base.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
+        private Enemy m_TargetEnemy;
+
+        public void SetTarget(Enemy enemy)
+        {
+            m_TargetEnemy = enemy;
+        }
         public void Hit()
         {
             Log.Debug("Hit");
+            GameEntry.Entity.ShowArrow(new ArrowData(GameEntry.Entity.GenerateSerialId(),800013,this,m_TargetEnemy));
         }
 
         private bool m_IsAttackComplete = false;
