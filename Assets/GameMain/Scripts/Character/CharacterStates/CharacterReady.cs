@@ -40,7 +40,7 @@ namespace StarForce
             }
             else
             {
-                m_TargetEnemy = GameEntry.EnemyManager.GetEnemy();
+                m_TargetEnemy = GameEntry.EnemyManager.GetNearestEnemy(procedureOwner.Owner.CachedTransform.position);
                 procedureOwner.Owner.SetTarget(m_TargetEnemy);
             }
         }

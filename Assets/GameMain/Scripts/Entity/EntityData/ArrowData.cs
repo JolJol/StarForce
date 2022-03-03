@@ -1,9 +1,10 @@
-﻿using UnityEditor.U2D;
+﻿using System;
+using UnityEditor.U2D;
 using UnityEngine;
 
 namespace StarForce
 {
-    [SerializeField]
+    [Serializable]
     public class ArrowData:EntityData
     {
         private Character m_Shooter;

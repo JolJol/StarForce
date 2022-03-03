@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace StarForce
 {
-    [SerializeField]
+    [Serializable]
     public class EnemyData:EntityData
     {
         public EnemyData(int entityId, int typeId) : base(entityId, typeId)

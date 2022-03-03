@@ -1,9 +1,10 @@
-﻿using UnityGameFramework.Runtime;
+﻿using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
     public class CharacterComponent:GameFrameworkComponent
     {
-                
+        
     }
 }

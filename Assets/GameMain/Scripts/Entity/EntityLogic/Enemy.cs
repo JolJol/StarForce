@@ -1,6 +1,8 @@
-﻿using GameFramework.Fsm;
+﻿using System;
+using GameFramework.Fsm;
 using UnityEngine;
 using UnityGameFramework.Runtime;
+using Random = UnityEngine.Random;
 
 namespace StarForce
 {
@@ -14,7 +16,7 @@ namespace StarForce
             get;
             private set;
         }
-        private readonly Vector3 m_TempPos = new Vector3(-25.52f,1.06f,22.81f);
+        private Vector3 m_TempPos = new Vector3(-25.52f,1.06f,22.81f);
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -31,7 +33,8 @@ namespace StarForce
                 Log.Error("敌人数据表无效");
                 return;
             }
-
+            m_TempPos.x = Random.Range(-31, -13);
+            m_TempPos.z = Random.Range(18, 36);
             CachedTransform.position = m_TempPos;
             CachedTransform.localScale = new Vector3(3,3,3);
             CachedTransform.Rotate(Vector3.up,180);

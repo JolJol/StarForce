@@ -82,7 +82,7 @@ namespace StarForce
                 }
             }
 
-            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+            procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Test_01"));
             ChangeState<ProcedureChangeScene>(procedureOwner);
         }
 

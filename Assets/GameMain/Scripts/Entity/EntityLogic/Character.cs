@@ -20,15 +20,18 @@ namespace StarForce
             get;
             private set;
         }
+
+        public static int Name = 0;
         protected override void OnInit(object userData)
         {
+            Name++;
             base.OnInit(userData);
             CachedAnimator = GetComponent<Animator>();
             FsmState<Character>[] states = new FsmState<Character>[3];
             states[0] = new CharacterIdle();
             states[1] = new CharacterReady();
             states[2] = new CharacterAttack();
-            m_CharacterFsm = GameEntry.Fsm.CreateFsm<Character>(this, states);
+            m_CharacterFsm = GameEntry.Fsm.CreateFsm<Character>(Name.ToString(),this, states);
         }
         private readonly Vector3 m_TempPos = new Vector3(-16.78f,1.06f,10.75f);
         protected override void OnShow(object userData)
@@ -41,7 +44,7 @@ namespace StarForce
                 return;
             }
             m_CharacterFsm.Start<CharacterIdle>();
-            CachedTransform.position = m_TempPos;
+            CachedTransform.position = m_CharacterData.Position;
             CachedTransform.localScale = new Vector3(3,3,3);
             
         }
