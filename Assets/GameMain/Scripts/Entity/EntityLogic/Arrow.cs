@@ -58,7 +58,7 @@ namespace StarForce
             if (other.gameObject == m_Target.gameObject)
             {
                 GameEntry.Entity.HideEntity(this.Entity);
-                m_Target.OnHit();
+                m_Target.OnHit(m_ArrowData.Attack);
             }
         }
     }

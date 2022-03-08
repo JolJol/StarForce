@@ -21,17 +21,19 @@ namespace StarForce
             private set;
         }
 
-        public static int Name = 0;
+        public CharacterData CharacterData => m_CharacterData;
+
+        private static int s_Name = 0;
         protected override void OnInit(object userData)
         {
-            Name++;
+            s_Name++;
             base.OnInit(userData);
             CachedAnimator = GetComponent<Animator>();
             FsmState<Character>[] states = new FsmState<Character>[3];
             states[0] = new CharacterIdle();
             states[1] = new CharacterReady();
             states[2] = new CharacterAttack();
-            m_CharacterFsm = GameEntry.Fsm.CreateFsm<Character>(Name.ToString(),this, states);
+            m_CharacterFsm = GameEntry.Fsm.CreateFsm<Character>(s_Name.ToString(),this, states);
         }
         private readonly Vector3 m_TempPos = new Vector3(-16.78f,1.06f,10.75f);
         protected override void OnShow(object userData)

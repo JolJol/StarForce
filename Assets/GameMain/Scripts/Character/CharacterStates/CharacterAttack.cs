@@ -1,6 +1,7 @@
 ﻿using GameFramework.Entity;
 using GameFramework.Fsm;
 using UnityEngine;
+using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
@@ -15,6 +16,7 @@ namespace StarForce
         }
 
         private readonly int m_AttackPara = Animator.StringToHash("Attack");
+        
         protected override void OnEnter(IFsm<Character> procedureOwner)
         {
             base.OnEnter(procedureOwner);
@@ -26,6 +28,7 @@ namespace StarForce
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
             if (procedureOwner.Owner.IsAttackComplete)
             {
+                Log.Debug("Time2 "+Time.time);
                 ChangeState<CharacterReady>(procedureOwner);
             }
         }

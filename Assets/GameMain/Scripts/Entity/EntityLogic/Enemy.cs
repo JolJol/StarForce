@@ -3,25 +3,33 @@ using GameFramework.Fsm;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 using Random = UnityEngine.Random;
-
+using UnityGameFramework.Runtime;
 namespace StarForce
 {
-    public class Enemy:EntityLogic
+    public class Enemy:Entity
     {
         private EnemyData m_EnemyData = null;
         private IFsm<Enemy> m_EnemyFsm;
-
         public Animator CachedAnimator
         {
             get;
             private set;
         }
+
+        public EnemyData EnemyData => m_EnemyData;
+
+        private static int s_Name = 0; 
+        
         private Vector3 m_TempPos = new Vector3(-25.52f,1.06f,22.81f);
         protected override void OnInit(object userData)
         {
+            s_Name++;
             base.OnInit(userData);
             CachedAnimator = GetComponent<Animator>();
-            
+            FsmState<Enemy>[] states = new FsmState<Enemy>[2];
+            states[0] = new EnemyIdle();
+            states[1] = new EnemyStiff();
+            m_EnemyFsm = GameEntry.Fsm.CreateFsm(s_Name.ToString(), this, states);
         }
 
         protected override void OnShow(object userData)
@@ -41,10 +49,17 @@ namespace StarForce
             GameEntry.EnemyManager.AddEnemy(this);
         }
 
-        private int m_OnHitPara = Animator.StringToHash("OnHit");
-        public void OnHit()
+        private readonly int m_OnHitPara = Animator.StringToHash("OnHit");
+        public void OnHit(float damage)
         {
             CachedAnimator.SetTrigger(m_OnHitPara);
+            var fromHpRatio = m_EnemyData.HpRatio;
+            m_EnemyData.OnHit(damage);
+            var toHpRatio = m_EnemyData.HpRatio;
+            if (fromHpRatio > toHpRatio)
+            {
+                GameEntry.HpBar.ShowHPBar(this, fromHpRatio, toHpRatio);
+            }
         }
     }
 }
