@@ -36,7 +36,7 @@ namespace StarForce
             //读表
             //todo
             m_Position = position;
-            m_AttackSpeed = 0.8f;
+            m_AttackSpeed = 0.2f;
             m_Attack = 5;
         }
     }

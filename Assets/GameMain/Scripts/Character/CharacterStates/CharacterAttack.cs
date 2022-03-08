@@ -28,7 +28,7 @@ namespace StarForce
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
             if (procedureOwner.Owner.IsAttackComplete)
             {
-                Log.Debug("Time2 "+Time.time);
+                // Log.Debug("Time2 "+Time.time);
                 ChangeState<CharacterReady>(procedureOwner);
             }
         }

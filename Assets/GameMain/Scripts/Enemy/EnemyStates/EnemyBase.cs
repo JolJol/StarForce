@@ -54,5 +54,7 @@ namespace StarForce
         {
             base.OnDestroy(procedureOwner);
         }
+
+        public abstract void OnHit(ProcedureOwner procedureOwner);
     }
 }

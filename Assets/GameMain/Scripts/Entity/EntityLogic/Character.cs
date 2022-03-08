@@ -64,7 +64,7 @@ namespace StarForce
         }
         public void Hit()
         {
-            Log.Debug("Hit");
+            // Log.Debug("Hit");
             GameEntry.Entity.ShowArrow(new ArrowData(GameEntry.Entity.GenerateSerialId(),800013,this,m_TargetEnemy));
         }
 

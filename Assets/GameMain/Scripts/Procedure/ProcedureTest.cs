@@ -21,15 +21,15 @@ namespace StarForce
             base.OnEnter(procedureOwner);
             GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800011,m_Pos1));
             m_Pos1.z += 5;
-            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800014,m_Pos1));
-            m_Pos1.x += 5;
-            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800015,m_Pos1));
-            m_Pos1.z -= 5;
-            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800016,m_Pos1));
-            m_Pos1.x += 5;
-            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800017,m_Pos1));
-            m_Pos1.z += 5; 
-            GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800018,m_Pos1));
+            // GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800014,m_Pos1));
+            // m_Pos1.x += 5;
+            // GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800015,m_Pos1));
+            // m_Pos1.z -= 5;
+            // GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800016,m_Pos1));
+            // m_Pos1.x += 5;
+            // GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800017,m_Pos1));
+            // m_Pos1.z += 5; 
+            // GameEntry.Entity.ShowCharacter(new CharacterData(GameEntry.Entity.GenerateSerialId(),800018,m_Pos1));
             for (int i = 0; i < 20; i++)
             {
                 GameEntry.Entity.ShowEnemy(new EnemyData(GameEntry.Entity.GenerateSerialId(),800012));
