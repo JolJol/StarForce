@@ -25,7 +25,7 @@ namespace StarForce
         protected override void OnEnter(IFsm<Enemy> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            m_Animator.SetTrigger(m_OnHitPara);
+            m_Animator.SetBool(m_OnHitPara,true);
             m_IsOnHit2 = false;
         }
 
@@ -47,24 +47,26 @@ namespace StarForce
         private bool m_IsOnHit2 = false;
         public override void OnHit(IFsm<Enemy> procedureOwner)
         {
-            if (!m_IsOnHit2)
-            {
-                m_Animator.SetTrigger(m_OnHitFromHitPara);
-                m_IsOnHit2 = true;
-                Log.Debug("OnHitFromHit");
-            }
-            else
-            {
-                m_Animator.SetTrigger(m_OnHitFromHit2Para);
-                m_IsOnHit2 = false;
-                Log.Debug("OnHitFromHit2");
-            }
+            m_Animator.SetTrigger(m_OnHitFromHitPara);
+            // if (!m_IsOnHit2)
+            // {
+            //     m_Animator.SetTrigger(m_OnHitPara);
+            //     m_IsOnHit2 = true;
+            //     Log.Debug("OnHitFromHit");
+            // }
+            // else
+            // {
+            //     m_Animator.SetTrigger(m_OnHitPara);
+            //     m_IsOnHit2 = false;
+            //     Log.Debug("OnHitFromHit2");
+            // }
             
         }
 
         public void OnStiffEnd(IFsm<Enemy> procedureOwner)
         {
             ChangeState<EnemyIdle>(procedureOwner);
+            m_Animator.SetBool(m_OnHitPara,false);
         }
     }
 }
