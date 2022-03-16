@@ -21,12 +21,11 @@ namespace StarForce
         private readonly int m_OnHitPara = Animator.StringToHash("OnHit");
         private readonly int m_OnHitFromHitPara = Animator.StringToHash("OnHitFromHit");
         private readonly int m_OnHitFromHit2Para = Animator.StringToHash("OnHitFromHit2");
-
+        
         protected override void OnEnter(IFsm<Enemy> procedureOwner)
         {
             base.OnEnter(procedureOwner);
-            m_Animator.SetBool(m_OnHitPara,true);
-            m_IsOnHit2 = false;
+            m_Animator.SetTrigger(m_OnHitPara);
         }
 
         protected override void OnUpdate(IFsm<Enemy> procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -43,30 +42,15 @@ namespace StarForce
         {
             base.OnDestroy(procedureOwner);
         }
-
-        private bool m_IsOnHit2 = false;
+        
         public override void OnHit(IFsm<Enemy> procedureOwner)
         {
-            m_Animator.SetTrigger(m_OnHitFromHitPara);
-            // if (!m_IsOnHit2)
-            // {
-            //     m_Animator.SetTrigger(m_OnHitPara);
-            //     m_IsOnHit2 = true;
-            //     Log.Debug("OnHitFromHit");
-            // }
-            // else
-            // {
-            //     m_Animator.SetTrigger(m_OnHitPara);
-            //     m_IsOnHit2 = false;
-            //     Log.Debug("OnHitFromHit2");
-            // }
-            
+            m_Animator.SetTrigger(m_OnHitPara);
         }
 
         public void OnStiffEnd(IFsm<Enemy> procedureOwner)
         {
             ChangeState<EnemyIdle>(procedureOwner);
-            m_Animator.SetBool(m_OnHitPara,false);
         }
     }
 }

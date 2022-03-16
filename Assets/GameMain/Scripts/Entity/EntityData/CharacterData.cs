@@ -1,4 +1,5 @@
 ﻿using System;
+using GameFramework.DataTable;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -34,10 +35,11 @@ namespace StarForce
         public CharacterData(int entityId, int typeId, Vector3 position) : base(entityId, typeId)
         {
             //读表
-            //todo
+            IDataTable<DRCharacter> dtCharacter = GameEntry.DataTable.GetDataTable<DRCharacter>();
+            DRCharacter drCharacter = dtCharacter.GetDataRow(typeId);
             m_Position = position;
-            m_AttackSpeed = 0.2f;
-            m_Attack = 5;
+            m_AttackSpeed = drCharacter.AttackSpeed;
+            m_Attack = drCharacter.Attack;
         }
     }
 }

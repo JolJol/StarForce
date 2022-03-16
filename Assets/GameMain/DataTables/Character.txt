@@ -1,0 +1,10 @@
+#	 角色表			
+#	Id		Attack	AttackSpeed
+#	int		float	float
+#	角色编号		攻击	攻击速度
+	800011	Character	5	1
+	800014	Character_Goblin_Female	10	0.5
+	800015	Character_Goblin_Male	4	3
+	800016	Character_Goblin_Shaman	6	2
+	800017	Character_Goblin_WarChief	7	1
+	800018	Character_Goblin_Warrior_Female	8	0.8
