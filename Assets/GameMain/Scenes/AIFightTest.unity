@@ -402,6 +402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character_Skeleton_Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 410052, guid: 616cc160fcb3b124b8e0fc587258594b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.408
+      objectReference: {fileID: 0}
     - target: {fileID: 439278, guid: 616cc160fcb3b124b8e0fc587258594b, type: 3}
       propertyPath: m_RootOrder
       value: 1
